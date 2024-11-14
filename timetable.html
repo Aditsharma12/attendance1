@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Timetable</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url("https://static.vecteezy.com/system/resources/previews/009/954/848/original/abstract-liquid-geometric-background-modern-wallpaper-for-web-banner-social-media-and-presentation-free-vector.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .table-container {
+            overflow-x: auto; /* Enables horizontal scrolling */
+            max-width: 90%; /* Restricts width for better view */
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px; /* Sets a minimum width for the table */
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 15px; /* Makes cells broader */
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>1st Hour</th>
+                <th>2nd Hour</th>
+                <th>3rd Hour</th>
+                <th>4th Hour</th>
+                <th>Break</th>
+                <th>5th Hour</th>
+                <th>6th Hour</th>
+                <th>7th Hour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monday</td>
+                <td><input type="text" id="mon-1" class="form-control"></td>
+                <td><input type="text" id="mon-2" class="form-control"></td>
+                <td><input type="text" id="mon-3" class="form-control"></td>
+                <td><input type="text" id="mon-4" class="form-control"></td>
+                <td>Break</td>
+                <td><input type="text" id="mon-5" class="form-control"></td>
+                <td><input type="text" id="mon-6" class="form-control"></td>
+                <td><input type="text" id="mon-7" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td><input type="text" id="tue-1" class="form-control"></td>
+                <td><input type="text" id="tue-2" class="form-control"></td>
+                <td><input type="text" id="tue-3" class="form-control"></td>
+                <td><input type="text" id="tue-4" class="form-control"></td>
+                <td>Break</td>
+                <td><input type="text" id="tue-5" class="form-control"></td>
+                <td><input type="text" id="tue-6" class="form-control"></td>
+                <td><input type="text" id="tue-7" class="form-control"></td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td><input type="text" id="wed-1" class="form-control"></td>
+              <td><input type="text" id="wed-2" class="form-control"></td>
+              <td><input type="text" id="wed-3" class="form-control"></td>
+              <td><input type="text" id="wed-4" class="form-control"></td>
+              <td>Break</td>
+              <td><input type="text" id="wed-5" class="form-control"></td>
+              <td><input type="text" id="wed-6" class="form-control"></td>
+              <td><input type="text" id="wed-7" class="form-control"></td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td><input type="text" id="thurs-1" class="form-control"></td>
+            <td><input type="text" id="thurs-2" class="form-control"></td>
+            <td><input type="text" id="thurs-3" class="form-control"></td>
+            <td><input type="text" id="thurs-4" class="form-control"></td>
+            <td>Break</td>
+            <td><input type="text" id="thurs-5" class="form-control"></td>
+            <td><input type="text" id="thurs-6" class="form-control"></td>
+            <td><input type="text" id="thurs-7" class="form-control"></td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td><input type="text" id="fri-1" class="form-control"></td>
+          <td><input type="text" id="fri-2" class="form-control"></td>
+          <td><input type="text" id="fri-3" class="form-control"></td>
+          <td><input type="text" id="fri-4" class="form-control"></td>
+          <td>Break</td>
+          <td><input type="text" id="fri-5" class="form-control"></td>
+          <td><input type="text" id="fri-6" class="form-control"></td>
+          <td><input type="text" id="fri-7" class="form-control"></td>
+      </tr>
+      <tr>
+        <td>Saturday</td>
+        <td><input type="text" id="sat-1" class="form-control"></td>
+        <td><input type="text" id="sat-2" class="form-control"></td>
+        <td><input type="text" id="sat-3" class="form-control"></td>
+        <td><input type="text" id="sat-4" class="form-control"></td>
+        <td>Break</td>
+        <td><input type="text" id="sat-5" class="form-control"></td>
+        <td><input type="text" id="sat-6" class="form-control"></td>
+        <td><input type="text" id="sat-7" class="form-control"></td>
+    </tr>
+        </tbody>
+    </table>
+</div>
+
+<button onclick="storeEntries()" class="btn btn-primary m-3">Save Entries</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    function storeEntries() {
+        const timetableEntries = {};
+
+        const days = ['mon', 'tue','wed','thurs','fri','sat'];
+        days.forEach(day => {
+            timetableEntries[day] = [];
+            for (let i = 1; i <= 7; i++) {
+                var cellValue = document.getElementById(`${day}-${i}`).value;
+                timetableEntries[day].push(cellValue);
+            }
+        });
+        localStorage.setItem("timetableEntries", JSON.stringify(timetableEntries));
+        console.log(timetableEntries); 
+        alert("entries saved successfully");
+    }
+</script>
+</body>
+</html>
