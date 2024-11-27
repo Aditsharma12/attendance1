@@ -5,51 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Student Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { display: flex;
-             justify-content: center;
-              align-items: center; 
-              height: 100vh;
-               margin: 0;
-                background: darkblue;
-                 color: black; background-image: url('https://getwallpapers.com/wallpaper/full/c/a/8/924819-sunny-day-background-1920x1080-meizu.jpg');}
-        .dashboard 
-        { width: 80%;
-          padding: 20px;
-          background: rgba(255, 255, 255, 0.2); 
-          border-radius: 10px; 
+        /* General Styling */
+        html{
+            background-color: #2D3E50
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1E1E2F, #2D3E50);
+            color: #FFFFFF;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Dashboard Box */
+        .dashboard {
+            width: 80%;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(46, 61, 80, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Headings */
+        h1, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #4ECCA3;
+        }
+
+        p {
+            color: #B0BEC5;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Buttons */
+        a.btn {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            color: #FFFFFF;
+            background-color: #4ECCA3;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        a.btn:hover {
+            background-color: #3DA28E;
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 10px rgba(78, 204, 163, 0.6);
+        }
+
+        /* Profile Image */
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #4ECCA3;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="dashboard">
-        <h1>Welcome to Your Dashboard, <span id="name"></span>!</h1>
+        <h1 id="greeting">Welcome, <span id="name"></span>!</h1>
         <p>Course: <span id="course"></span> | Year: <span id="year"></span></p>
-        <h3>Right Motivation:</h3>
+
+        <div>
+            <img src="https://via.placeholder.com/100" alt="Profile Picture" class="profile-img">
+        </div>
+
+        <h3>Your Motivation:</h3>
         <p>“Keep pushing forward, <span id="name-again"></span>! Each step brings you closer to your goals.”</p>
-        <a href="profile.html" class="btn btn-primary">View Profile</a>
-        <a href="calender.html" class="btn btn-primary">View Academic Calendar</a>
-        <a href="goals.html" class="btn btn-primary">see and edit goals</a>
-        <a href="fullsch.html" class="btn btn-primary">full timetable</a>
-        <a href="calc.html" class="btn btn-primary">Attendance</a>
-        <a href="timetable.html" class="btn btn-primary">edit Timetable</a>
-        <a href="leave.html" class="btn btn-primary">Apply for leave</a>
-        <a href="registered.html" class="btn btn-primary">personal details edit</a>
+
+        <div class="d-flex flex-wrap justify-content-center">
+            <a href="profile.html" class="btn">View Profile</a>
+            <a href="calender.html" class="btn">Academic Calendar</a>
+            <a href="goals.html" class="btn">Edit Goals</a>
+            <a href="fullsch.html" class="btn">View Timetable</a>
+            <a href="timetable.html" class="btn">Edit Timetable</a>
+            <a href="registered.html" class="btn">Personal Details</a>
+        </div>
     </div>
 
     <script>
-        const studentData = JSON.parse(localStorage.getItem('studentData'));
-        if (studentData) {
-            document.getElementById('name').textContent = studentData.name;
-            document.getElementById('name-again').textContent = studentData.name;
-            document.getElementById('course').textContent = studentData.course;
-            document.getElementById('year').textContent = studentData.year;
-            document.getElementById('section').textContent = studentData.section;
-            document.getElementById('batch').textContent = studentData.batch;
-        } else {
-           document.body.innerHTML = "<h2>No student data available.</h2>";
-document.body.innerHTML = "<a href='registered.html' class='btn btn-primary'>personal details edit</a>";
-        }
+        // Fetch Student Data
+        const studentData = JSON.parse(localStorage.getItem('studentData')) || {
+            name: "Aditya",
+            course: "B.Tech Computer Science",
+            year: "1st Year",
+            section: "A",
+            batch: "2023-2027"
+        };
+
+        // Dynamic Greeting
+        const hours = new Date().getHours();
+        let greeting = "Welcome";
+        if (hours < 12) greeting = "Good Morning";
+        else if (hours < 18) greeting = "Good Afternoon";
+        else greeting = "Good Evening";
+
+        // Populate Data
+        document.getElementById('greeting').textContent = `${greeting}, ${studentData.name}!`;
+        document.getElementById('name').textContent = studentData.name;
+        document.getElementById('name-again').textContent = studentData.name;
+        document.getElementById('course').textContent = studentData.course;
+        document.getElementById('year').textContent = studentData.year;
     </script>
 </body>
 </html>
+ 
