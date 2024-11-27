@@ -1,132 +1,189 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Timetable Demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Timetable</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-      body {
-         background-image: url("https://static.vecteezy.com/system/resources/previews/009/954/848/original/abstract-liquid-geometric-background-modern-wallpaper-for-web-banner-social-media-and-presentation-free-vector.jpg");
-         background-size: cover;
-         background-position: center;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         min-height: 100vh;
-         margin: 0;
-      }
+        /* General Styling */
+        html{
+            background-color: #2D3E50
+        }
+        body {
+            background: linear-gradient(135deg, #222831, #393E46); /* Dark gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(57, 62, 70, 0.9); /* Semi-transparent container background */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+        }
+
+        .table {
+            margin: 0;
+            background: transparent; /* Transparent background for the table */
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+            color: #EEEEEE; /* Soft off-white text for better readability */
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .table thead th {
+            color: #00ADB5; /* Bright teal for headers */
+            font-weight: 700;
+            font-size: 18px;
+            background: rgba(46, 61, 80, 0.7); /* Slightly darker header background */
+        }
+
+        .table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05); /* Subtle striping for rows */
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background: rgba(57, 62, 70, 0.8); /* Slightly darker row background */
+        }
+
+        .table td {
+            padding: 10px;
+            color: black; /* Softer gray for table content */
+        }
+
+        .table td p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .table thead th, .table tbody td {
+            border: 1px solid #393E46; /* Table border blending with the background */
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="table-container">
-      <table class="table table-bordered table-light">
-          <thead>
-              <tr>
-                  <th>Day</th>
-                  <th>1st Hour</th>
-                  <th>2nd Hour</th>
-                  <th>3rd Hour</th>
-                  <th>4th Hour</th>
-                  <th>Break</th>
-                  <th>5th Hour</th>
-                  <th>6th Hour</th>
-                  <th>7th Hour</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>Monday</td>
-                  <td><p id="mon-1"></p></td>
-                  <td><p id="mon-2"></p></td>
-                  <td><p id="mon-3"></p></td>
-                  <td><p id="mon-4"></p></td>
-                  <td>Break</td>
-                  <td><p id="mon-5"></p></td>
-                  <td><p id="mon-6"></p></td>
-                  <td><p id="mon-7"></p></td>
-              </tr>
-              <tr>
-                  <td>Tuesday</td>
-                  <td><p id="tue-1"></p></td>
-                  <td><p id="tue-2"></p></td>
-                  <td><p id="tue-3"></p></td>
-                  <td><p id="tue-4"></p></td>
-                  <td>Break</td>
-                  <td><p id="tue-5"></p></td>
-                  <td><p id="tue-6"></p></td>
-                  <td><p id="tue-7"></p></td>
-              </tr>
-              <tr>
-                  <td>Wednesday</td>
-                  <td><p id="wed-1"></p></td>
-                  <td><p id="wed-2"></p></td>
-                  <td><p id="wed-3"></p></td>
-                  <td><p id="wed-4"></p></td>
-                  <td>Break</td>
-                  <td><p id="wed-5"></p></td>
-                  <td><p id="wed-6"></p></td>
-                  <td><p id="wed-7"></p></td>
-              </tr>
-              <tr>
-                  <td>Thursday</td>
-                  <td><p id="thurs-1"></p></td>
-                  <td><p id="thurs-2"></p></td>
-                  <td><p id="thurs-3"></p></td>
-                  <td><p id="thurs-4"></p></td>
-                  <td>Break</td>
-                  <td><p id="thurs-5"></p></td>
-                  <td><p id="thurs-6"></p></td>
-                  <td><p id="thurs-7"></p></td>
-              </tr>
-              <tr>
-                  <td>Friday</td>
-                  <td><p id="fri-1"></p></td>
-                  <td><p id="fri-2"></p></td>
-                  <td><p id="fri-3"></p></td>
-                  <td><p id="fri-4"></p></td>
-                  <td>Break</td>
-                  <td><p id="fri-5"></p></td>
-                  <td><p id="fri-6"></p></td>
-                  <td><p id="fri-7"></p></td>
-              </tr>
-              <tr>
-                  <td>Saturday</td>
-                  <td><p id="sat-1"></p></td>
-                  <td><p id="sat-2"></p></td>
-                  <td><p id="sat-3"></p></td>
-                  <td><p id="sat-4"></p></td>
-                  <td>Break</td>
-                  <td><p id="sat-5"></p></td>
-                  <td><p id="sat-6"></p></td>
-                  <td><p id="sat-7"></p></td>
-              </tr>
-          </tbody>
-      </table>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>1st Hour</th>
+                    <th>2nd Hour</th>
+                    <th>3rd Hour</th>
+                    <th>4th Hour</th>
+                    <th>Break</th>
+                    <th>5th Hour</th>
+                    <th>6th Hour</th>
+                    <th>7th Hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td><p id="mon-1"></p></td>
+                    <td><p id="mon-2"></p></td>
+                    <td><p id="mon-3"></p></td>
+                    <td><p id="mon-4"></p></td>
+                    <td>Break</td>
+                    <td><p id="mon-5"></p></td>
+                    <td><p id="mon-6"></p></td>
+                    <td><p id="mon-7"></p></td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td><p id="tue-1"></p></td>
+                    <td><p id="tue-2"></p></td>
+                    <td><p id="tue-3"></p></td>
+                    <td><p id="tue-4"></p></td>
+                    <td>Break</td>
+                    <td><p id="tue-5"></p></td>
+                    <td><p id="tue-6"></p></td>
+                    <td><p id="tue-7"></p></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td><p id="wed-1"></p></td>
+                    <td><p id="wed-2"></p></td>
+                    <td><p id="wed-3"></p></td>
+                    <td><p id="wed-4"></p></td>
+                    <td>Break</td>
+                    <td><p id="wed-5"></p></td>
+                    <td><p id="wed-6"></p></td>
+                    <td><p id="wed-7"></p></td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td><p id="thurs-1"></p></td>
+                    <td><p id="thurs-2"></p></td>
+                    <td><p id="thurs-3"></p></td>
+                    <td><p id="thurs-4"></p></td>
+                    <td>Break</td>
+                    <td><p id="thurs-5"></p></td>
+                    <td><p id="thurs-6"></p></td>
+                    <td><p id="thurs-7"></p></td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td><p id="fri-1"></p></td>
+                    <td><p id="fri-2"></p></td>
+                    <td><p id="fri-3"></p></td>
+                    <td><p id="fri-4"></p></td>
+                    <td>Break</td>
+                    <td><p id="fri-5"></p></td>
+                    <td><p id="fri-6"></p></td>
+                    <td><p id="fri-7"></p></td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td><p id="sat-1"></p></td>
+                    <td><p id="sat-2"></p></td>
+                    <td><p id="sat-3"></p></td>
+                    <td><p id="sat-4"></p></td>
+                    <td>Break</td>
+                    <td><p id="sat-5"></p></td>
+                    <td><p id="sat-6"></p></td>
+                    <td><p id="sat-7"></p></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="index.html" class="btn btn-primary m-3">Back to Dashboard</a>
     </div>
-    
+
     <script>
-      // Function to load and display entries automatically
-      function loadEntries() {
-          const storedTimetableEntries = localStorage.getItem("timetableEntries");
+        // Function to load and display entries automatically
+        function loadEntries() {
+            const storedTimetableEntries = localStorage.getItem("timetableEntries");
 
-          if (storedTimetableEntries) {
-              const timetableEntries = JSON.parse(storedTimetableEntries);
+            if (storedTimetableEntries) {
+                const timetableEntries = JSON.parse(storedTimetableEntries);
 
-              // Populate the <p> tags with stored timetable data
-              Object.keys(timetableEntries).forEach(day => {
-                  timetableEntries[day].forEach((entry, index) => {
-                      document.getElementById(`${day}-${index + 1}`).innerText = entry;
-                  });
-              });
-          } else {
-              alert("No timetable entries found.");
-          }
-      }
+                // Populate the <p> tags with stored timetable data
+                Object.keys(timetableEntries).forEach(day => {
+                    timetableEntries[day].forEach((entry, index) => {
+                        document.getElementById(`${day}-${index + 1}`).innerText = entry;
+                    });
+                });
+            } else {
+                alert("No timetable entries found.");
+            }
+        }
 
-      // Call loadEntries automatically when the page loads
-      window.onload = loadEntries;
+        // Call loadEntries automatically when the page loads
+        window.onload = loadEntries;
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
